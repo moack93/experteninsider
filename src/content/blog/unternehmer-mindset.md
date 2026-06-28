@@ -4,6 +4,8 @@ description: "Wer selbstständig wird, ändert nicht nur seine Arbeitszeit - er 
 datum: 2026-05-10
 kategorie: Unternehmertum
 autor: Xperten Insider Redaktion
+bild: https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80&auto=format&fit=crop
+bildAlt: Unternehmer arbeitet fokussiert am Laptop
 freigabe: true
 ---
 

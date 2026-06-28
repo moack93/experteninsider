@@ -4,6 +4,8 @@ description: "Kein Werbebudget? Kein Problem. Wie Selbstständige mit gezieltem 
 datum: 2026-06-01
 kategorie: Marketing
 autor: Xperten Insider Redaktion
+bild: https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80&auto=format&fit=crop
+bildAlt: Person schreibt Content am Schreibtisch
 freigabe: true
 ---
 

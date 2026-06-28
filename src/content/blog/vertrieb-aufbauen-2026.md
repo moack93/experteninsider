@@ -4,6 +4,8 @@ description: "Kein Vertriebsprofi? Kein Team? Kein Problem. Wie Einzelunternehme
 datum: 2026-05-20
 kategorie: Vertrieb
 autor: Xperten Insider Redaktion
+bild: https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&q=80&auto=format&fit=crop
+bildAlt: Handschlag nach erfolgreichem Vertriebsgespräch
 freigabe: true
 ---
 

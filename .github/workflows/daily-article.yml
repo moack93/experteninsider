@@ -50,10 +50,33 @@ jobs:
             node scripts/generate-article.mjs
           fi
 
-      - name: Änderungen committen
+      - name: Pull Request erstellen
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config user.name "Xperten Insider Bot"
           git config user.email "bot@experteninsider.de"
+
+          BRANCH="artikel/$(date '+%Y-%m-%d')-$RANDOM"
+          git checkout -b "$BRANCH"
           git add src/content/blog/
-          git diff --staged --quiet || git commit -m "feat: neuer Artikel $(date '+%Y-%m-%d')"
-          git push
+          git diff --staged --quiet && echo "Kein neuer Artikel" && exit 0
+
+          git commit -m "feat: neuer Artikel $(date '+%Y-%m-%d')"
+          git push origin "$BRANCH"
+
+          gh pr create \
+            --title "📝 Neuer Artikel $(date '+%d.%m.%Y') - Bitte reviewen" \
+            --body "## Neuer KI-Artikel zur Freigabe
+
+          Bitte den Artikel prüfen und bei OK auf **Merge** klicken.
+
+          Nach dem Merge wird die Seite automatisch von Netlify aktualisiert.
+
+          ### Checkliste
+          - [ ] Inhalt geprüft
+          - [ ] Titel passt
+          - [ ] Keine falschen Aussagen
+          - [ ] Bild vorhanden oder nicht nötig" \
+            --base master \
+            --head "$BRANCH"
