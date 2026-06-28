@@ -73,6 +73,8 @@ const websiteSchema = {
               kategorie={a.data.kategorie}
               datum={a.data.datum}
               slug={a.id}
+              bild={a.data.bild}
+              bildAlt={a.data.bildAlt}
               border={i < 2 ? 'bottom' : 'none'}
             />
           ))}
@@ -95,6 +97,8 @@ const websiteSchema = {
                 kategorie={a.data.kategorie}
                 datum={a.data.datum}
                 slug={a.id}
+                bild={a.data.bild}
+                bildAlt={a.data.bildAlt}
               />
             </div>
           ))}

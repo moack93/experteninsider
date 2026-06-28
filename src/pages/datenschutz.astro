@@ -4,15 +4,111 @@ import Header from '@components/layout/Header.astro';
 import Footer from '@components/layout/Footer.astro';
 ---
 <BaseLayout
-  title="Datenschutz"
-  description="Datenschutzerklärung von Xperten Insider."
+  title="Datenschutzerklärung"
+  description="Datenschutzerklärung von Xperten Insider gemäß DSGVO."
   path="/datenschutz"
 >
   <Header />
   <main class="mx-auto max-w-3xl px-4 py-16">
-    <h1 class="font-display text-4xl font-black uppercase text-ink mb-8">Datenschutz</h1>
-    <div class="prose-news">
-      <p>Datenschutzerklärung gemäß DSGVO. Bitte vollständig ausfüllen.</p>
+    <h1 style="font-family:'Barlow Condensed',Impact,sans-serif;font-weight:900;text-transform:uppercase;" class="text-5xl text-ink mb-8">Datenschutz</h1>
+
+    <div class="prose-news space-y-6">
+
+      <section>
+        <h2>1. Datenschutz auf einen Blick</h2>
+        <h3>Allgemeine Hinweise</h3>
+        <p>
+          Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit deinen personenbezogenen
+          Daten passiert, wenn du diese Website besuchst. Personenbezogene Daten sind alle Daten, mit denen
+          du persönlich identifiziert werden kannst.
+        </p>
+      </section>
+
+      <section>
+        <h2>2. Datenerfassung auf dieser Website</h2>
+        <h3>Wer ist verantwortlich für die Datenerfassung?</h3>
+        <p>
+          Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten
+          kannst du dem <a href="/impressum" class="text-green hover:text-green-dark">Impressum</a> entnehmen.
+        </p>
+
+        <h3>Wie erfassen wir deine Daten?</h3>
+        <p>
+          Deine Daten werden zum einen dadurch erhoben, dass du uns diese mitteilst. Andere Daten werden
+          automatisch oder nach deiner Einwilligung beim Besuch der Website durch unsere IT-Systeme erfasst.
+          Das sind vor allem technische Daten (z. B. Internetbrowser, Betriebssystem oder Uhrzeit des
+          Seitenaufrufs).
+        </p>
+
+        <h3>Wofür nutzen wir deine Daten?</h3>
+        <p>
+          Ein Teil der Daten wird erhoben, um eine fehlerfreie Bereitstellung der Website zu gewährleisten.
+          Andere Daten können zur Analyse deines Nutzerverhaltens verwendet werden.
+        </p>
+      </section>
+
+      <section>
+        <h2>3. Hosting</h2>
+        <p>
+          Diese Website wird bei Netlify gehostet. Anbieter ist die Netlify, Inc., 512 2nd Street, Suite 200,
+          San Francisco, California 94107, USA.
+        </p>
+        <p>
+          Netlify kann Verbindungsdaten erfassen, wenn du diese Website besuchst. Details findest du in der
+          Datenschutzerklärung von Netlify:
+          <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer" class="text-green hover:text-green-dark">
+            https://www.netlify.com/privacy/
+          </a>
+        </p>
+      </section>
+
+      <section>
+        <h2>4. Externe Fonts (Google Fonts)</h2>
+        <p>
+          Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten sogenannte Google Fonts, die von
+          Google bereitgestellt werden. Beim Aufruf einer Seite lädt dein Browser die benötigten Fonts in
+          deinen Browsercache, um Texte und Schriftarten korrekt anzuzeigen.
+        </p>
+        <p>
+          Zu diesem Zweck muss der von dir verwendete Browser Verbindung zu den Servern von Google aufnehmen.
+          Anbieter ist die Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA.
+        </p>
+      </section>
+
+      <section>
+        <h2>5. Bilder (Unsplash)</h2>
+        <p>
+          Diese Website verwendet Bilder des Dienstes Unsplash (Unsplash Inc., 500 rue Notre-Dame Ouest,
+          Montréal, QC, H2Y 1V9, Kanada). Beim Laden der Seiten kann eine Verbindung zu Servern von Unsplash
+          hergestellt werden.
+        </p>
+      </section>
+
+      <section>
+        <h2>6. Deine Rechte</h2>
+        <p>Du hast jederzeit das Recht auf:</p>
+        <ul>
+          <li>Auskunft über deine gespeicherten personenbezogenen Daten</li>
+          <li>Berichtigung unrichtiger Daten</li>
+          <li>Löschung deiner gespeicherten Daten</li>
+          <li>Einschränkung der Datenverarbeitung</li>
+          <li>Datenübertragbarkeit</li>
+          <li>Widerspruch gegen die Verarbeitung</li>
+        </ul>
+        <p>
+          Wenn du glaubst, dass die Verarbeitung deiner Daten gegen das Datenschutzrecht verstößt, hast du
+          das Recht, sich bei der zuständigen Aufsichtsbehörde zu beschweren.
+        </p>
+      </section>
+
+      <section>
+        <h2>7. Kontakt</h2>
+        <p>
+          Bei Fragen zum Datenschutz erreichst du uns unter:<br />
+          E-Mail: datenschutz@experteninsider.de
+        </p>
+      </section>
+
     </div>
   </main>
   <Footer />
