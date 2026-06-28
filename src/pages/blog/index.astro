@@ -1,0 +1,45 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Header from '@components/layout/Header.astro';
+import Footer from '@components/layout/Footer.astro';
+import ArticleCard from '@components/ui/ArticleCard.astro';
+import { site } from '@data/site';
+
+const articles = (await getCollection('blog'))
+  .filter((a) => a.data.freigabe)
+  .sort((a, b) => b.data.datum.getTime() - a.data.datum.getTime());
+---
+<BaseLayout
+  title="Alle Artikel - Business, Marketing & Unternehmertum"
+  description="Alle Insider-Artikel zu Business, Marketing und Unternehmertum. Praxiswissen für Selbstständige und Unternehmer."
+  path="/blog"
+>
+  <Header />
+
+  <main class="mx-auto max-w-7xl px-4 py-8">
+    <div class="border-b-2 border-ink pb-2 mb-8">
+      <h1 class="font-display text-5xl font-black uppercase leading-none text-ink">Alle Artikel</h1>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-0">
+      {articles.map((a, i) => (
+        <div class={`p-5 ${i % 3 !== 2 ? 'border-r border-rule' : ''} border-b border-rule`}>
+          <ArticleCard
+            title={a.data.title}
+            description={a.data.description}
+            kategorie={a.data.kategorie}
+            datum={a.data.datum}
+            slug={a.id}
+          />
+        </div>
+      ))}
+    </div>
+
+    {articles.length === 0 && (
+      <p class="font-body text-ink-muted text-center py-16">Noch keine Artikel veröffentlicht.</p>
+    )}
+  </main>
+
+  <Footer />
+</BaseLayout>

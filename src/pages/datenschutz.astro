@@ -1,0 +1,19 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Header from '@components/layout/Header.astro';
+import Footer from '@components/layout/Footer.astro';
+---
+<BaseLayout
+  title="Datenschutz"
+  description="Datenschutzerklärung von Xperten Insider."
+  path="/datenschutz"
+>
+  <Header />
+  <main class="mx-auto max-w-3xl px-4 py-16">
+    <h1 class="font-display text-4xl font-black uppercase text-ink mb-8">Datenschutz</h1>
+    <div class="prose-news">
+      <p>Datenschutzerklärung gemäß DSGVO. Bitte vollständig ausfüllen.</p>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>

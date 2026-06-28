@@ -1,0 +1,50 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Header from '@components/layout/Header.astro';
+import Footer from '@components/layout/Footer.astro';
+import ArticleCard from '@components/ui/ArticleCard.astro';
+import { site } from '@data/site';
+
+export async function getStaticPaths() {
+  const all = (await getCollection('blog')).filter((a) => a.data.freigabe);
+  const kategorien = [...new Set(all.map((a) => a.data.kategorie))];
+  return kategorien.map((k) => ({
+    params: { kategorie: k.toLowerCase() },
+    props: { name: k, articles: all.filter((a) => a.data.kategorie === k) },
+  }));
+}
+
+const { name, articles } = Astro.props;
+const sorted = articles.sort((a, b) => b.data.datum.getTime() - a.data.datum.getTime());
+---
+<BaseLayout
+  title={`${name} - Alle Artikel`}
+  description={`Alle Insider-Artikel zum Thema ${name}: Praxiswissen für Unternehmer und Selbstständige.`}
+  path={`/kategorie/${name.toLowerCase()}`}
+>
+  <Header />
+
+  <main class="mx-auto max-w-7xl px-4 py-8">
+    <div class="border-b-2 border-ink pb-2 mb-8">
+      <p class="kicker mb-1">Kategorie</p>
+      <h1 class="font-display text-5xl font-black uppercase leading-none text-ink">{name}</h1>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-0">
+      {sorted.map((a, i) => (
+        <div class={`p-5 ${i % 3 !== 2 ? 'border-r border-rule' : ''} border-b border-rule`}>
+          <ArticleCard
+            title={a.data.title}
+            description={a.data.description}
+            kategorie={a.data.kategorie}
+            datum={a.data.datum}
+            slug={a.id}
+          />
+        </div>
+      ))}
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

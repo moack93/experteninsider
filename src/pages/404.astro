@@ -1,0 +1,20 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Header from '@components/layout/Header.astro';
+import Footer from '@components/layout/Footer.astro';
+---
+<BaseLayout
+  title="Seite nicht gefunden"
+  description="Diese Seite existiert nicht. Zurück zur Startseite von Xperten Insider."
+  path="/404"
+>
+  <Header />
+  <main class="mx-auto max-w-7xl px-4 py-32 text-center">
+    <p style="font-family:'Barlow Condensed',Impact,sans-serif;font-weight:900;font-size:clamp(6rem,20vw,16rem);line-height:0.9;color:white;text-shadow:3px 3px 0 #1a1a1a;-webkit-text-stroke:1px #1a1a1a;">404</p>
+    <p class="mt-6 font-sans text-sm uppercase tracking-widest text-ink-muted">Seite nicht gefunden</p>
+    <a href="/" class="mt-8 inline-block font-sans text-xs font-bold uppercase tracking-widest text-ink border-2 border-ink px-6 py-2 hover:bg-ink hover:text-sand transition-colors">
+      ← Zur Startseite
+    </a>
+  </main>
+  <Footer />
+</BaseLayout>

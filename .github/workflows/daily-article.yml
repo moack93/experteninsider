@@ -1,0 +1,59 @@
+name: Täglicher Artikel
+
+on:
+  schedule:
+    # Jeden Tag um 07:00 Uhr (UTC+2 = 09:00 Uhr DE)
+    - cron: '0 7 * * *'
+  workflow_dispatch:
+    inputs:
+      keyword:
+        description: 'Optionales Keyword (leer = zufällig aus Pool)'
+        required: false
+        default: ''
+      anzahl:
+        description: 'Anzahl Artikel (Standard: 1)'
+        required: false
+        default: '1'
+
+jobs:
+  generate-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Node.js Setup
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Dependencies installieren
+        run: npm ci
+
+      - name: Anthropic SDK installieren
+        run: npm install @anthropic-ai/sdk
+
+      - name: Artikel generieren
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          COUNT="${{ github.event.inputs.anzahl || '1' }}"
+          KEYWORD="${{ github.event.inputs.keyword }}"
+
+          if [ -n "$KEYWORD" ]; then
+            node scripts/generate-article.mjs "$KEYWORD"
+          elif [ "$COUNT" -gt "1" ]; then
+            node scripts/generate-batch.mjs "$COUNT"
+          else
+            node scripts/generate-article.mjs
+          fi
+
+      - name: Änderungen committen
+        run: |
+          git config user.name "Xperten Insider Bot"
+          git config user.email "bot@experteninsider.de"
+          git add src/content/blog/
+          git diff --staged --quiet || git commit -m "feat: neuer Artikel $(date '+%Y-%m-%d')"
+          git push

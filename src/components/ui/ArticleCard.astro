@@ -1,0 +1,72 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  kategorie: string;
+  datum: Date;
+  slug: string;
+  bild?: string;
+  bildAlt?: string;
+  featured?: boolean;
+  border?: 'right' | 'bottom' | 'none';
+}
+
+const { title, description, kategorie, datum, slug, bild, bildAlt, featured = false, border = 'none' } = Astro.props;
+
+const datumFormatiert = datum.toLocaleDateString('de-DE', {
+  day: '2-digit',
+  month: 'long',
+  year: 'numeric',
+});
+
+const borderClass = {
+  right: 'border-r border-rule pr-4',
+  bottom: 'border-b border-rule pb-4',
+  none: '',
+}[border];
+---
+
+<article class={`${borderClass} ${featured ? 'pb-6' : ''}`}>
+
+  {bild && (
+    <a href={`/blog/${slug}`} class="block mb-3 overflow-hidden">
+      <img
+        src={bild}
+        alt={bildAlt ?? title}
+        width={featured ? 800 : 400}
+        height={featured ? 450 : 225}
+        loading="lazy"
+        decoding="async"
+        class={`w-full object-cover grayscale hover:grayscale-0 transition-all duration-500 ${featured ? 'h-64' : 'h-40'}`}
+      />
+    </a>
+  )}
+
+  <p class="kicker mb-1">{kategorie}</p>
+
+  <a href={`/blog/${slug}`} class="group block">
+    {featured ? (
+      <h2 style="font-family:'Playfair Display',Georgia,serif;font-weight:900;" class="text-[clamp(1.6rem,3.5vw,2.4rem)] leading-tight text-ink group-hover:text-green transition-colors">
+        {title}
+      </h2>
+    ) : (
+      <h3 style="font-family:'Playfair Display',Georgia,serif;font-weight:700;" class="text-lg leading-snug text-ink group-hover:text-green transition-colors">
+        {title}
+      </h3>
+    )}
+  </a>
+
+  <p class="mt-1 font-sans text-xs text-ink-subtle uppercase tracking-widest">{datumFormatiert}</p>
+
+  <p class={`mt-2 font-sans text-sm leading-relaxed text-ink-muted ${featured ? 'text-base' : ''}`}>
+    {description}
+  </p>
+
+  <a
+    href={`/blog/${slug}`}
+    class="mt-3 inline-block font-sans text-xs font-bold uppercase tracking-widest text-green hover:text-green-dark transition-colors"
+  >
+    Weiterlesen →
+  </a>
+
+</article>

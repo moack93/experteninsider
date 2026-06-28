@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+@theme {
+  /* Farben */
+  --color-sand: #c9c8b4;
+  --color-sand-light: #d8d7c4;
+  --color-sand-dark: #b5b4a0;
+  --color-ink: #1a1a1a;
+  --color-ink-muted: #4a4a4a;
+  --color-ink-subtle: #7a7a7a;
+  --color-green: #6abf4b;
+  --color-green-dark: #559939;
+  --color-white: #ffffff;
+  --color-rule: #a0a090;
+
+  /* Fonts */
+  --font-display: 'Barlow Condensed', 'Impact', 'Arial Narrow', sans-serif;
+  --font-headline: 'Playfair Display', 'Georgia', serif;
+  --font-body: 'Lato', 'Arial', sans-serif;
+  --font-sans: 'Lato', 'Arial', sans-serif;
+
+  /* Radien */
+  --radius-none: 0;
+}
+
+@layer base {
+  html {
+    background-color: var(--color-sand);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+  }
+
+  body {
+    background-color: var(--color-sand);
+    min-height: 100vh;
+  }
+
+  /* Masthead-Überschriften (nur direkt genutzt via font-display Klasse) */
+  /* Artikel-Headlines nutzen font-headline (Playfair) */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-headline);
+    font-weight: 700;
+    line-height: 1.1;
+  }
+
+  hr {
+    border-color: var(--color-rule);
+  }
+
+  /* Newspaper prose */
+  .prose-news p {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-ink);
+    margin-bottom: 0.75rem;
+  }
+
+  .prose-news h2 {
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-ink);
+  }
+
+  .prose-news h3 {
+    font-size: 1.1rem;
+    margin-top: 1.25rem;
+    margin-bottom: 0.4rem;
+    color: var(--color-ink);
+  }
+
+  .prose-news blockquote {
+    border-left: 3px solid var(--color-green);
+    padding-left: 1rem;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--color-ink-muted);
+    margin: 1.5rem 0;
+  }
+
+  .prose-news ul {
+    list-style: disc;
+    padding-left: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .prose-news li {
+    margin-bottom: 0.25rem;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+  }
+}
+
+/* Masthead X letter */
+.masthead-x {
+  color: var(--color-green);
+  display: inline;
+}
+
+/* Newspaper column grid */
+.news-grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+}
+
+.news-grid-2 {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 0;
+}
+
+/* Rule dividers */
+.rule-top {
+  border-top: 2px solid var(--color-ink);
+}
+
+.rule-bottom {
+  border-bottom: 1px solid var(--color-rule);
+}
+
+/* Kategorie label */
+.kicker {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-green);
+}

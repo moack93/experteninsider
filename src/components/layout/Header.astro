@@ -1,0 +1,36 @@
+---
+import { site } from '@data/site';
+---
+<header class="border-b-2 border-ink bg-sand px-4 py-2">
+  <!-- Top bar -->
+  <div class="mx-auto flex max-w-7xl items-center justify-between text-xs font-sans uppercase tracking-widest text-ink-muted border-b border-rule pb-2 mb-3">
+    <span>experteninsider.de</span>
+    <span class="font-bold tracking-widest">Proudly Presented</span>
+    <span>Issue {site.issue} / {site.issueDate}</span>
+  </div>
+
+  <!-- Masthead -->
+  <div class="mx-auto max-w-7xl">
+    <a href="/" class="block">
+      <h1 style="font-family: 'Barlow Condensed', Impact, sans-serif; font-weight: 900; font-size: clamp(3rem, 12vw, 9rem); line-height: 0.9; text-transform: uppercase; letter-spacing: -0.02em; color: white; text-shadow: 3px 3px 0 #1a1a1a; -webkit-text-stroke: 1px #1a1a1a;">
+        <span style="color: #6abf4b; -webkit-text-stroke: 1px #559939; text-shadow: 3px 3px 0 #559939;">X</span>perten Insider
+      </h1>
+    </a>
+  </div>
+
+  <!-- Nav -->
+  <nav class="mx-auto mt-3 max-w-7xl border-t border-rule pt-2">
+    <ul class="flex flex-wrap gap-x-6 gap-y-1">
+      {site.nav.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class="font-sans text-xs font-bold uppercase tracking-widest text-ink hover:text-green transition-colors"
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>

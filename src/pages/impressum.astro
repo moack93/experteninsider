@@ -1,0 +1,20 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Header from '@components/layout/Header.astro';
+import Footer from '@components/layout/Footer.astro';
+---
+<BaseLayout
+  title="Impressum"
+  description="Impressum von Xperten Insider."
+  path="/impressum"
+>
+  <Header />
+  <main class="mx-auto max-w-3xl px-4 py-16">
+    <h1 class="font-display text-4xl font-black uppercase text-ink mb-8">Impressum</h1>
+    <div class="prose-news">
+      <p><strong>Angaben gemäß § 5 TMG</strong></p>
+      <p>Bitte trage hier deine vollständigen Angaben ein: Name, Adresse, Kontakt.</p>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>
